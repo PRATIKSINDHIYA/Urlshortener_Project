@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import { createshorturl, redirectshorturl } from "../Controller/url.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";    
+dotenv.config();
 
 const app = express();
 
