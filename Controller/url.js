@@ -4,7 +4,7 @@ import shortid from "shortid";
 export const createshorturl =  async (req,res)=>{
     const fullurl = req.body.fullurl;
     const shortcode = shortid();
-    const shorturl = `http://localhost:3000/${shortcode}`
+    const shorturl = `https://urlshortener-project-zkct.vercel.app/${shortcode}`
     const newdatabaseentry = new Url({
         fullurl:fullurl,
         shortcode:shortcode,
