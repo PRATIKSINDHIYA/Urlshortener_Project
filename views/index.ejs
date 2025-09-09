@@ -85,12 +85,12 @@
         <form action="/form-submit" method="post">
             <input type="text" name="fullurl" placeholder="Enter Your URL" required>
             <button type="submit">Shorten</button>
-        </form>
-        <% if (shorturl) { %>
-        <div class="short-url-section">
-            <p>Your short URL:</p>
-            <a href="<%= shorturl %>" target="_blank"><%= shorturl %></a>
-        </div>
+        </form> 
+        <% if (shorturl && shorturl.length > 0) { %>
+            <div class="short-url-section">
+                <p>Your short URL:</p>
+                <a href="<%= shorturl %>" target="_blank"><%= shorturl %></a>
+            </div>
         <% } %>
     </div>
 </body>

@@ -18,8 +18,9 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.get("/", (req, res) => {
-    res.render("index.ejs", { shorturl: null });
+    res.render("index.ejs", { shorturl: "" });
 });
+
 
 app.post("/form-submit", createshorturl);
 
