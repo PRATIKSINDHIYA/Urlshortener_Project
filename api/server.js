@@ -1,9 +1,9 @@
 import express from 'express'
 import mongoose from 'mongoose';
 import shortid from 'shortid';
-import {Url} from './Models/Url.js'
-import { createshorturl } from './Controller/url.js';
-import { redirectshorturl } from './Controller/url.js';
+import {Url} from '../Models/Url.js'
+import { createshorturl } from '../Controller/url.js';
+import { redirectshorturl } from '../Controller/url.js';
 
 const app = express();
 
