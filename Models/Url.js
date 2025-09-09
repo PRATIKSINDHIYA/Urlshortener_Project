@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const urlschema = new mongoose.Schema({
-    fullurl:String,
-    shortcode:String
-})
+    fullurl: String,
+    shortcode: String
+});
 
-export const Url = new mongoose.model("Url",urlschema);
+export const Url = mongoose.model("Url", urlschema);

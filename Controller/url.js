@@ -1,28 +1,27 @@
 import { Url } from "../Models/Url.js";
 import shortid from "shortid";
 
-export const createshorturl =  async (req,res)=>{
+export const createshorturl = async (req, res) => {
     const fullurl = req.body.fullurl;
     const shortcode = shortid();
-    const shorturl = `https://urlshortener-project-zkct.vercel.app/${shortcode}`
-    const newdatabaseentry = new Url({
-        fullurl:fullurl,
-        shortcode:shortcode,
-    })
-    console.log(newdatabaseentry)
-    await newdatabaseentry.save();
-    res.render('index.ejs',{shorturl:shorturl})
-}
-
-export const redirectshorturl = async(req,res)=>{
-    const shortcode = req.params.shortcode;
-    const data  = await Url.findOne({shortcode:shortcode});
-    if(data){
-        console.log(data.fullurl)
-        res.redirect(data.fullurl)
-    }
-    else{
-        console.log("url not found!")
-    }
+    const shorturl = `https://urlshortener-project-zkct.vercel.app/${shortcode}`;
     
-}
+    const newdatabaseentry = new Url({
+        fullurl,
+        shortcode,
+    });
+
+    await newdatabaseentry.save();
+    res.render("index.ejs", { shorturl });
+};
+
+export const redirectshorturl = async (req, res) => {
+    const shortcode = req.params.shortcode;
+    const data = await Url.findOne({ shortcode });
+
+    if (data) {
+        return res.redirect(data.fullurl);
+    } else {
+        return res.status(404).send("URL not found!");
+    }
+};
