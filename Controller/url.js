@@ -5,7 +5,7 @@ export const createshorturl = async (req, res) => {
     try {
         const fullurl = req.body.fullurl;
         const shortcode = shortid();
-        const shorturl = `https://urlshortener-project-zkct.vercel.app/${shortcode}`;
+        const shorturl = `https://urlshortener-project-zkct-git-main-pratik-sindhiyas-projects.vercel.app/${shortcode}`;
         
         const newdatabaseentry = new Url({
             fullurl,
