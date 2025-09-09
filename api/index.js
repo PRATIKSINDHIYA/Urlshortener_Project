@@ -14,12 +14,12 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "../views")); // ab correct folder milega
 
 
-// MongoDB connection
-mongoose.connect("mongodb+srv://mydatabase:myrealdatabase@cluster0.nzmws71.mongodb.net/", {
-    dbName: "NodejsMongoCourse"
+mongoose.connect(process.env.MONGO_URI, {
+  dbName: "NodejsMongoCourse"
 })
 .then(() => console.log("MongoDB connected"))
-.catch(err => console.log(err));
+.catch(err => console.error(err));
+
 
 app.use(express.urlencoded({ extended: true }));
 
