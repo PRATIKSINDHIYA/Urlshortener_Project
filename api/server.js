@@ -1,27 +1,27 @@
-import express from 'express'
-import mongoose from 'mongoose';
-import shortid from 'shortid';
-import {Url} from '../Models/Url.js'
-import { createshorturl } from '../Controller/url.js';
-import { redirectshorturl } from '../Controller/url.js';
+import express from "express";
+import mongoose from "mongoose";
+import { createshorturl, redirectshorturl } from "../Controller/url.js";
 
 const app = express();
 
-mongoose.connect("mongodb+srv://mydatabase:myrealdatabase@cluster0.nzmws71.mongodb.net/",{
-    dbName:"NodejsMongoCourse"
-}).then(()=>console.log("mongodb connected successfully..!")).catch((err)=>console.log(err))
+// MongoDB connection
+mongoose.connect("mongodb+srv://mydatabase:myrealdatabase@cluster0.nzmws71.mongodb.net/", {
+    dbName: "NodejsMongoCourse"
+}).then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
 
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/',(req,res)=>{
-    res.render('index.ejs',{shorturl:null})
-})
+// set view engine
+app.set("view engine", "ejs");
+app.set("views", "views");
 
-app.post('/form-submit',createshorturl)
+app.get("/", (req, res) => {
+    res.render("index.ejs", { shorturl: null });
+});
 
-app.get("/:shortcode",redirectshorturl)
+app.post("/form-submit", createshorturl);
 
-const port = 3000;
+app.get("/:shortcode", redirectshorturl);
 
-// app.listen(port,()=>console.log(`server is running on port ${port}`))
 export default app;
