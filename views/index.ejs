@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 420px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 28px 24px 28px;
+        }
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 24px;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus {
+            border: 1.5px solid #3182ce;
+        }
+        button {
+            padding: 12px 22px;
+            background: #3182ce;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .short-url-section {
+            text-align: center;
+            margin-top: 18px;
+        }
+        .short-url-section a {
+            color: #3182ce;
+            font-weight: 500;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .short-url-section a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 18px 8px 16px 8px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form action="/form-submit" method="post">
+            <input type="text" name="fullurl" placeholder="Enter Your URL" required>
+            <button type="submit">Shorten</button>
+        </form>
+        <% if (shorturl) { %>
+        <div class="short-url-section">
+            <p>Your short URL:</p>
+            <a href="<%= shorturl %>" target="_blank"><%= shorturl %></a>
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>
